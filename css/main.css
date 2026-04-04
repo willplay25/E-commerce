@@ -1,0 +1,36 @@
+/* font for all words */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+/* root */
+
+:root {
+    --clr-main: #4b33a8;
+    --clr-white: #ececec;
+    --clr-grey: #e2e2e2;
+    --clr-red: #961818;
+}
+
+/* all */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    font-family: 'Rubik', sans-serif;
+
+}
+
+h1, h2, h3, h4, h5, h6, p, a, input, textarea {
+    margin: 0;
+
+}
+
+ul {
+
+    list-style-type: none;
+}
+
+a {
+
+    text-decoration: none;
+}
