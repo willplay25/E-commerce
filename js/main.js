@@ -248,10 +248,13 @@ const productos = [
 ];
 
 const contenedorproductos = document.querySelector("#contenedor-productos");
+const botonesCategorias = document.querySelectorAll(".boton-categoria");
 
-function loadproducts() {
+function loadproducts(productosElegidos) {
 
-    productos.forEach(producto => {
+    contenedorproductos.innerHTML = "";
+
+    productosElegidos.forEach(producto => {
 
         const div = document.createElement("div");
         div.classList.add("producto");
@@ -272,12 +275,25 @@ function loadproducts() {
 
 }
 
-loadproducts();
+loadproducts(productos);
 
-// <div class="producto">
-// <img class="producto-imagen" src="img/coats/01.jpg" alt="">
-// <div class="producto-detalles">
-// <h3 class="producto-titulo">Abrigo 01</h3>
-// <p class="producto-precio">$1000</p>
-// <button class="producto-agregar">Agregar</button>
-// </div>
+botonesCategorias.forEach(boton => {
+
+   boton.addEventListener("click", (e) => {
+
+    botonesCategorias.forEach(boton => boton.classList.remove("active"));
+    e.currentTarget.classList.add("active");
+
+    if(e.currentTarget.id != "todos"){
+        const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id); 
+        loadproducts(productosBoton);
+    }else{
+        loadproducts(productos);
+    }
+
+    
+
+
+   })
+
+})
