@@ -143,7 +143,7 @@ const productos = [
 {
     id: "Camisa-01",
     titulo: "Camisa 01",
-    imagen: "./img/shirt/01.jpg",
+    imagen: "./img/shirts/01.jpg",
     categoria: {
 
         nombre: "Shirts",
@@ -156,7 +156,7 @@ const productos = [
 {
     id: "Camisa-02",
     titulo: "Camisa 02",
-    imagen: "./img/shirt/02.jpg",
+    imagen: "./img/shirts/02.jpg",
     categoria: {
 
         nombre: "Shirts",
@@ -169,7 +169,7 @@ const productos = [
 {
     id: "Camisa-03",
     titulo: "Camisa 03",
-    imagen: "./img/shirt/03.jpg",
+    imagen: "./img/shirts/03.jpg",
     categoria: {
 
         nombre: "Shirts",
@@ -182,7 +182,7 @@ const productos = [
 {
     id: "Camisa-04",
     titulo: "Camisa 04",
-    imagen: "./img/shirt/04.jpg",
+    imagen: "./img/shirts/04.jpg",
     categoria: {
 
         nombre: "Shirts",
@@ -195,7 +195,7 @@ const productos = [
 {
     id: "Camisa-05",
     titulo: "Camisa 05",
-    imagen: "./img/shirt/05.jpg",
+    imagen: "./img/shirts/05.jpg",
     categoria: {
 
         nombre: "Shirts",
@@ -208,7 +208,7 @@ const productos = [
 {
     id: "Camisa-06",
     titulo: "Camisa 06",
-    imagen: "./img/shirt/06.jpg",
+    imagen: "./img/shirts/06.jpg",
     categoria: {
 
         nombre: "Shirts",
@@ -221,7 +221,7 @@ const productos = [
 {
     id: "Camisa-07",
     titulo: "Camisa 07",
-    imagen: "./img/shirt/07.jpg",
+    imagen: "./img/shirts/07.jpg",
     categoria: {
 
         nombre: "Shirts",
@@ -234,7 +234,7 @@ const productos = [
 {
     id: "Camisa-08",
     titulo: "Camisa 08",
-    imagen: "./img/shirt/08.jpg",
+    imagen: "./img/shirts/08.jpg",
     categoria: {
 
         nombre: "Shirts",
@@ -245,4 +245,39 @@ const productos = [
 
 },
 
-]
+];
+
+const contenedorproductos = document.querySelector("#contenedor-productos");
+
+function loadproducts() {
+
+    productos.forEach(producto => {
+
+        const div = document.createElement("div");
+        div.classList.add("producto");
+        div.innerHTML = `
+        <div class="producto">
+            <img class="producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
+            <div class="producto-detalles">
+                <h3 class="producto-titulo">${producto.titulo}</h3>
+                <p class="producto-precio">$${producto.precio}</p>
+                <button class="producto-agregar" id="${producto.id}">Agregar</button>
+            </div>
+        </div>
+        
+        `;
+
+        contenedorproductos.append(div);
+    })
+
+}
+
+loadproducts();
+
+// <div class="producto">
+// <img class="producto-imagen" src="img/coats/01.jpg" alt="">
+// <div class="producto-detalles">
+// <h3 class="producto-titulo">Abrigo 01</h3>
+// <p class="producto-precio">$1000</p>
+// <button class="producto-agregar">Agregar</button>
+// </div>
