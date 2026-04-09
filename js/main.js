@@ -57,9 +57,9 @@ const productos = [
 
 },
 {
-    id: "abrigo-04",
-    titulo: "Abrigo 04",
-    imagen: "./img/coats/04.jpg",
+    id: "abrigo-05",
+    titulo: "Abrigo 05",
+    imagen: "./img/coats/05.jpg",
     categoria: {
 
         nombre: "Coats",
@@ -250,6 +250,8 @@ const productos = [
 const contenedorproductos = document.querySelector("#contenedor-productos");
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
 const TituloPrincipal = document.querySelector("#titulo-principal");
+let botonesAgregar = document.querySelectorAll(".producto-agregar");
+const numerito = document.querySelector("#numerito");
 
 function loadproducts(productosElegidos) {
 
@@ -273,6 +275,8 @@ function loadproducts(productosElegidos) {
 
         contenedorproductos.append(div);
     })
+
+    actualizarbotonesAgregar();
 
 }
 
@@ -302,4 +306,42 @@ botonesCategorias.forEach(boton => {
 
    })
 
-})
+});
+
+function actualizarbotonesAgregar(){
+
+    let botonesAgregar = document.querySelectorAll(".producto-agregar");
+
+    botonesAgregar.forEach(boton => {
+        boton.addEventListener("click", agregaralCarrito);
+    });
+}
+
+
+const productosEnCarrito = [];
+
+function agregaralCarrito (e){
+
+    const idboton = e.currentTarget.id;
+    const productoAgregado = productos.find(producto => producto.id === idboton);
+
+    if(productosEnCarrito.some(producto => producto.id === idboton)) {
+
+       const index = productosEnCarrito.findIndex(producto => producto.id === idboton);
+        productosEnCarrito(index).cantidad++;
+    
+    }else {
+        productoAgregado.cantidad = 1;
+        productosEnCarrito.push(productoAgregado);
+
+    }
+
+    actualizarnumerito();
+    // console.log(productosEnCarrito);
+}
+
+function actualizarnumerito () {
+    let nuevonumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+    numerito.innerHTML = nuevonumerito;
+}
+
