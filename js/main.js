@@ -249,6 +249,7 @@ const productos = [
 
 const contenedorproductos = document.querySelector("#contenedor-productos");
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
+const TituloPrincipal = document.querySelector("#titulo-principal");
 
 function loadproducts(productosElegidos) {
 
@@ -285,9 +286,14 @@ botonesCategorias.forEach(boton => {
     e.currentTarget.classList.add("active");
 
     if(e.currentTarget.id != "todos"){
+        const productoCategoria = productos.find(producto => producto.categoria.id === e.currentTarget.id);
+        TituloPrincipal.innerHTML= productoCategoria.categoria.nombre;
+
+        
         const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id); 
         loadproducts(productosBoton);
     }else{
+        TituloPrincipal.innerHTML= "Todos los productos";
         loadproducts(productos);
     }
 
