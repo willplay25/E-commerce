@@ -328,7 +328,7 @@ function agregaralCarrito (e){
     if(productosEnCarrito.some(producto => producto.id === idboton)) {
 
        const index = productosEnCarrito.findIndex(producto => producto.id === idboton);
-        productosEnCarrito(index).cantidad++;
+        productosEnCarrito[index].cantidad++;
     
     }else {
         productoAgregado.cantidad = 1;
@@ -337,11 +337,10 @@ function agregaralCarrito (e){
     }
 
     actualizarnumerito();
-    // console.log(productosEnCarrito);
 }
 
 function actualizarnumerito () {
     let nuevonumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
-    numerito.innerHTML = nuevonumerito;
+    numerito.innerText = nuevonumerito;
 }
 
