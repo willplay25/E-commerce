@@ -337,6 +337,8 @@ function agregaralCarrito (e){
     }
 
     actualizarnumerito();
+
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }
 
 function actualizarnumerito () {
