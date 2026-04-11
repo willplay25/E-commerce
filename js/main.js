@@ -317,8 +317,19 @@ function actualizarbotonesAgregar(){
     });
 }
 
+let proooductosEnCarrito;
+let nuevoNumerito;
 
-const productosEnCarrito = [];
+const productosEnCarritoLS = JSON.parse(localStorage.getItem("productos-en-carrito"));
+
+if(productosEnCarritoLS){
+    
+    productosEnCarrito = productosEnCarritoLS;
+    actualizarnumerito();
+}else{
+    productosEnCarrito = [];
+}
+
 
 function agregaralCarrito (e){
 
