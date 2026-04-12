@@ -317,14 +317,14 @@ function actualizarbotonesAgregar(){
     });
 }
 
-let proooductosEnCarrito;
+let productosEnCarrito;
 let nuevoNumerito;
 
-const productosEnCarritoLS = JSON.parse(localStorage.getItem("productos-en-carrito"));
+let productosEnCarritoLS = localStorage.getItem("procutos-en-carrito");
 
 if(productosEnCarritoLS){
     
-    productosEnCarrito = productosEnCarritoLS;
+    productosEnCarrito = JSON.parse(productosEnCarritoLS);
     actualizarnumerito();
 }else{
     productosEnCarrito = [];
